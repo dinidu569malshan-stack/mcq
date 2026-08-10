@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCQ Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="quiz-card">
+      <div class="top">
+        <div>
+          <p class="small-title">INTERACTIVE QUIZ</p>
+          <h1>MCQ Quiz App</h1>
+        </div>
+        <div class="score-box">
+          Score: <span id="liveScore">0</span>
+        </div>
+      </div>
+
+      <div id="quizArea">
+        <div class="quiz-info">
+          <span id="questionNumber">Question 1 of 10</span>
+          <span id="timer">15s</span>
+        </div>
+
+        <div class="progress">
+          <div id="progressBar"></div>
+        </div>
+
+        <h2 id="question">Question appears here</h2>
+
+        <div id="answerButtons" class="answers"></div>
+
+        <button id="nextBtn" class="next-btn">Next Question</button>
+      </div>
+
+      <div id="resultArea" class="result hidden">
+        <div class="result-icon">🏆</div>
+        <h2>Quiz Completed!</h2>
+        <p>Your final score is</p>
+        <div class="final-score"><span id="finalScore">0</span>/10</div>
+        <p id="resultMessage"></p>
+        <button id="restartBtn" class="next-btn">Restart Quiz</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
