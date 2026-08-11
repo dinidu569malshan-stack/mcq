@@ -58,5 +58,67 @@
   </main>
 
   <script src="script.js"></script>
+  <script>
+  // ==============================
+  // BEST SCORE SYSTEM
+  // ==============================
+
+  const bestScoreElement = document.getElementById("bestScore");
+  const finalScoreElement = document.getElementById("finalScore");
+
+  let savedBestScore = localStorage.getItem("mcqBestScore") || 0;
+
+  bestScoreElement.textContent = savedBestScore;
+
+  const scoreObserver = new MutationObserver(() => {
+    const currentScore = Number(finalScoreElement.textContent);
+
+    if (currentScore > Number(savedBestScore)) {
+      savedBestScore = currentScore;
+
+      localStorage.setItem("mcqBestScore", currentScore);
+
+      bestScoreElement.textContent = currentScore;
+    }
+  });
+
+  scoreObserver.observe(finalScoreElement, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+
+  // ==============================
+  // DARK / LIGHT MODE
+  // ==============================
+
+  const themeToggle = document.getElementById("themeToggle");
+
+  const savedTheme = localStorage.getItem("quizTheme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    themeToggle.textContent = "☀️";
+  }
+
+  themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("light-mode");
+
+    if (document.body.classList.contains("light-mode")) {
+
+      themeToggle.textContent = "☀️";
+      localStorage.setItem("quizTheme", "light");
+
+    } else {
+
+      themeToggle.textContent = "🌙";
+      localStorage.setItem("quizTheme", "dark");
+
+    }
+
+  });
+</script>
 </body>
 </html>
